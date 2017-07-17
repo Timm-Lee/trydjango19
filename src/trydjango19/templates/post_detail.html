@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>{{ title }}</h1>
+
+    {{ instance.title }}
+    {{ instance.content }}<br/>
+    {{ instance.updated }}<br/>
+    {{ instance.timestamp }}<br/>
+    {{ instance.id }}<br/>
+    {{ instance.pk }}<br/>
+
+{% endblock content %} 
