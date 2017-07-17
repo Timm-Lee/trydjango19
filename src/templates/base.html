@@ -1,7 +1,13 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
     <title>{% block head_title %}Try Django 1.9{% endblock head_title %}</title>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/bootstrap-theme.min.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <style>{% block style %}{% endblock style %}</style>
 </head>
 <body>
@@ -14,6 +20,8 @@
     {% endblock content %}
 </div>
 
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/bootstrap.min.js' %}"></script>
 
 </body>
 </html>
