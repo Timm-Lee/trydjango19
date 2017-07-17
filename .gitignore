@@ -97,3 +97,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# vagrant
+.vagrant/
+
+# PyCharm
+.idea/
+
