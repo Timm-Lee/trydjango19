@@ -12,7 +12,7 @@ from .forms import PostForm
 # Create your views here.
 
 def post_create(request):
-    form = PostForm(request.POST or None)
+    form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         instance = form.save(commit=False)
         print(form.cleaned_data.get("title"))
@@ -21,7 +21,8 @@ def post_create(request):
 
         # return HttpResponseRedirect(instance.get_absolute_url())
         # return HttpResponseRedirect(reverse("posts:detail", kwargs={"id":instance.id}))
-        return HttpResponseRedirect(reverse("posts:detail", kwargs={"id": instance.id}))
+        # return HttpResponseRedirect(reverse("posts:detail", kwargs={"id": instance.id}))
+        return redirect(reverse("posts:detail", kwargs={"id": instance.id}))
     else:
         messages.error(request, "Not Successfully Created")
     context = {
@@ -36,7 +37,6 @@ def post_detail(request, id=None):
         "title": instance.title,
         "instance": instance,
     }
-
     return render(request, "post_detail.html", context)
 
 
@@ -66,7 +66,7 @@ def post_list(request):
 
 def post_update(request, id=None):
     instance = get_object_or_404(Post, id=id)
-    form = PostForm(request.POST or None, instance=instance)
+    form = PostForm(request.POST or None, request.FILES or None , instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()

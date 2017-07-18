@@ -22,12 +22,15 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^posts/', include("posts.urls", namespace='posts')),
     # url(r'^posts', views.post_home),
     # url(r'^posts/$', "posts.views.post_home"),
     # url(r'^posts', "<appname>.views.<function_name>"),
-    url(r'^posts/', include("posts.urls", namespace='posts')),
+    # url(r'^create/$', "posts.views.post_create"),
+    # url(r'^(?P<id>\d+)/$',"posts.views.post_detail", name='detail'),
 ]
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
